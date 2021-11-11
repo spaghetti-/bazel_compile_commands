@@ -16,9 +16,9 @@ done
 
 # Decompose, insert and keep the most recent entry for a given file, then
 # recombine.
-sed 's/\(^[[]\)\|\([],]$\)//;/^$/d;' < $JSON_OUT \
+gsed 's/\(^[[]\)\|\([],]$\)//;/^$/d;' < $JSON_OUT \
     | tac | sort -u -t, -k1,1 \
-    | sed '1s/^./[\0/;s/}$/},/;$s/,$/]/' > $JSON_OUT.tmp
+    | gsed '1s/^./[\0/;s/}$/},/;$s/,$/]/' > $JSON_OUT.tmp
 mv $JSON_OUT{.tmp,}
 gsed -e 's/ -fno-canonical-system-headers//g' -i $JSON_OUT
 echo "Done!"
