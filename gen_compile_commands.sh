@@ -20,5 +20,5 @@ sed 's/\(^[[]\)\|\([],]$\)//;/^$/d;' < $JSON_OUT \
     | tac | sort -u -t, -k1,1 \
     | sed '1s/^./[\0/;s/}$/},/;$s/,$/]/' > $JSON_OUT.tmp
 mv $JSON_OUT{.tmp,}
-sed -e 's/ -fno-canonical-system-headers//g' -i $JSON_OUT
+gsed -e 's/ -fno-canonical-system-headers//g' -i $JSON_OUT
 echo "Done!"
